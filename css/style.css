@@ -1,0 +1,225 @@
+/* default override */
+
+::-moz-selection { background: #cbbbda; color: #fff; text-shadow: none; }
+::selection { background: #cbbbda; color: #fff; text-shadow: none; }
+
+
+/* ==|== primary styles =====================================================
+   Author: 
+   ========================================================================== */
+  
+
+body {
+  background-color: #fff;
+  //position: relative; /* why is this here? */
+}
+
+a {
+	color: #6b4796;
+}
+
+a:hover {
+	color: #9f87bc;
+}
+
+
+/* from Twitter Bootstrap docs CSS */
+/*
+
+modified:
+header, footer - background-color, background-image
+
+*/
+section {
+  padding-top: 60px;
+}
+section > .row {
+  margin-bottom: 10px;
+}
+header, footer {
+  background-color: #5a4374;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#49365e), to(#725592));
+  background-image: -webkit-linear-gradient(#49365ee, #725592);
+  background-image: -moz-linear-gradient(#49365ee, #725592);
+  background-image: -o-linear-gradient(top, #49365ee, #725592);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#49365e), to(#725592));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#49365e', endColorstr='#725592', GradientType=0); /* IE8 and down */
+}
+header div.inner, footer div.inner {
+  padding: 45px 0;
+  -webkit-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+          box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+header h1,
+footer h1,
+header p,
+footer p {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+}
+header p a,
+footer p a {
+  color: #fff;
+  font-weight: bold;
+}
+header {
+  margin-top: 40px;
+}
+header h1,
+header p {
+  text-align: center;
+  margin-bottom: 9px;
+}
+header h1 {
+  font-size: 54px;
+  line-height: 1;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+header p {
+  font-weight: 300;
+}
+header p.lead {
+  font-size: 20px;
+  line-height: 27px;
+}
+footer {
+  margin-top: 80px;
+  padding: 0;
+  border: none;
+}
+footer p {
+  margin-bottom: 0;
+  color: rgba(255,255,255,.8)
+}
+footer p.right {
+  float: right;
+}
+/* /from Twitter Bootstrap docs CSS */
+
+
+
+
+#github-projects {
+	-moz-column-count: 2;
+	-moz-column-gap: 20px;
+	-webkit-column-count: 2;
+	-webkit-column-gap: 20px;
+	column-count: 2;
+	column-gap: 20px;
+}
+
+#github-activities h5 {
+	line-height: 1.5;
+}
+
+#github-activities h5:first-letter {
+	text-transform: uppercase;
+}
+
+#twitter-activities li {
+	
+}
+
+ul.seperator li {
+	padding: 10px 0;
+	border-bottom: 1px solid #e0e0e0;
+}
+ul.seperator li:last-child {
+	border-bottom: none;
+}
+
+ul.vertical-space li {
+	margin: 5px 0;
+}
+
+
+/* TODO: 
+these should be a sprite and cached 
+find some better looking icons
+*/
+/* link icons */
+.icon {
+	padding-left: 20px;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+.github {
+	background-image: url('https://github.com/favicon.png');
+}
+
+.linkedin {
+	background-image: url('http://www.linkedin.com/favicon.ico');
+}
+
+.flickr {
+	//background-image: url('http://www.flickr.com/favicon.ico');
+}
+
+.twitter {
+	background-image: url('http://twitter.com/favicon.ico');
+}
+
+.facebook {
+	background-image: url('http://www.facebook.com/favicon.ico');
+}
+
+.stackoverflow {
+	background-image: url('http://stackoverflow.com/favicon.ico');
+}
+
+.forrst {
+	background-image: url('http:///forrst.com/forrst_green.ico');
+}
+
+.kickstarter {
+	background-image: url('http://www.kickstarter.com/favicon.png');
+}
+/* /link icons */
+
+
+
+
+/* ==|== non-semantic helper classes ======================================== */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+.hidden { display: none !important; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+
+/* ==|== media queries ====================================================== */
+
+@media only screen and (min-width: 480px) {
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+
+
+/* ==|== print styles ======================================================= */
+ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; } 
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
