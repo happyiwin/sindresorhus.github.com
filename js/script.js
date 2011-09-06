@@ -16,15 +16,13 @@ $(function() {
 		var data = response.data,
 			output = [];
 		for ( var i = 0, len = data.length; i < len; i++ ) {
-			var item = data[i];
-			if ( item.fork ) {
-				var dateCreated = new Date( Date.parse( item.created_at ) ),
-					dateUpdated = new Date( Date.parse( item.updated_at ) ),
-					relativeCreated = relativeTime( dateCreated ),
-					relativeUpdated = relativeTime( dateUpdated );
-				output.push('<li class="tip" data-tipsy-gravity="e" title="Created ' + relativeCreated + '<br />Updated ' + relativeUpdated + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4>');
-				output.push('<p>' + item.description + '</p></li>');
-			}
+			var item = data[i],
+				dateCreated = new Date( Date.parse( item.created_at ) ),
+				dateUpdated = new Date( Date.parse( item.updated_at ) ),
+				relativeCreated = relativeTime( dateCreated ),
+				relativeUpdated = relativeTime( dateUpdated );
+			output.push('<li class="tip" data-tipsy-gravity="e" title="Created ' + relativeCreated + '<br />Updated ' + relativeUpdated + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4>');
+			output.push('<p>' + item.description + '</p></li>');
 		}
 		$githubProjects.html( output.join('') ).find('.tip').tipsy({
 			gravity: 'e',
