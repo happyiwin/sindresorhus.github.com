@@ -10,8 +10,7 @@
   
 
 body {
-  background-color: #fff;
-  //position: relative; /* why is this here? */
+	background-color: #F6F6F6;
 }
 
 a {
@@ -133,7 +132,7 @@ footer p.right {
 
 ul.seperator li {
 	padding: 10px 0;
-	border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px dashed #e0e0e0;
 }
 ul.seperator li:last-child {
 	border-bottom: none;
@@ -151,40 +150,73 @@ find some better looking icons
 /* link icons */
 .icon {
 	padding-left: 20px;
-	background-repeat: no-repeat;
-	background-position: center left;
+	background: url('../img/favicons.png') no-repeat;
 }
+
+
 
 .github {
-	background-image: url('https://github.com/favicon.png');
+	background-position: 0 0;
 }
 
-.linkedin {
-	background-image: url('http://www.linkedin.com/favicon.ico');
-}
-
-.flickr {
-	//background-image: url('http://www.flickr.com/favicon.ico');
+.github:hover {
+	background-position: -384px 0;
 }
 
 .twitter {
-	background-image: url('http://twitter.com/favicon.ico');
+	background-position: 0 -16px;
+}
+
+.twitter:hover {
+	background-position: -384px -16px;
 }
 
 .facebook {
-	background-image: url('http://www.facebook.com/favicon.ico');
+	background-position: 0 -32px;
+}
+
+.facebook:hover {
+	background-position: -384px -32px;
+}
+
+.linkedin {
+	background-position: 0 -48px;
+}
+
+.linkedin:hover {
+	background-position: -384px -48px;
 }
 
 .stackoverflow {
-	background-image: url('http://stackoverflow.com/favicon.ico');
+	background-position: 0 -64px;
+}
+
+.stackoverflow:hover {
+	background-position: -384px -64px;
+}
+
+.flickr {
+	background-position: 0 -80px;
+}
+
+.flickr:hover {
+	background-position: -384px -80px;
 }
 
 .forrst {
-	background-image: url('http:///forrst.com/forrst_green.ico');
+	background-position: 0 -96px;
+}
+
+.forrst:hover {
+	background-position: -384px -96px;
 }
 
 .kickstarter {
-	background-image: url('http://www.kickstarter.com/favicon.png');
+	background-position: 0 -112px;
+}
+
+.kickstarter:hover {
+	background-position: -384px -112px;
 }
 /* /link icons */
 
