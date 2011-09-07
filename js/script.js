@@ -62,7 +62,7 @@ $(function() {
 	
 	// get my latest tweets
 	var $twitterActivities = $('#twitter-activities');
-	$.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=sindresorhus&count=10&trim_user=true&callback=?', function(response) {
+	$.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=sindresorhus&count=13&trim_user=true&callback=?', function(response) {
 		var data = response,
 			output = [];
 		for ( var i = 0, len = data.length; i < len; i++ ) {
