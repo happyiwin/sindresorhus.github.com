@@ -20,9 +20,10 @@ $(function() {
 				dateUpdated = new Date( Date.parse( item.updated_at ) ),
 				dateCreated = new Date( Date.parse( item.created_at ) ),
 				relativeUpdated = relativeTime( dateUpdated ),
-				relativeCreated = relativeTime( dateCreated );
+				relativeCreated = relativeTime( dateCreated ),
+				description = item.name === 'sindresorhus.github.com' ? 'The website you\'re currently viewing' : item.description;
 			output.push('<li class="tip" data-tipsy-gravity="e" title="Updated ' + relativeUpdated + '<br />Created ' + relativeCreated + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4>');
-			output.push('<p>' + item.description + '</p></li>');
+			output.push('<p>' + description + '</p></li>');
 		}
 		$githubProjects.html( output.join('') ).find('.tip').tipsy({
 			gravity: 'e',
