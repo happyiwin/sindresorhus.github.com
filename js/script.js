@@ -13,7 +13,7 @@ $(function() {
 	// get my repositories from GitHub
 	var $githubProjects = $('#github-projects');
 	$.getJSON('https://api.github.com/users/sindresorhus/repos?callback=?', function(response) {
-		var data = response.data,
+		var data = response.data.reverse(),
 			output = [];
 		for ( var i = 0, len = data.length; i < len; i++ ) {
 			var item = data[i],
