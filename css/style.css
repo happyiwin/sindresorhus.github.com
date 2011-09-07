@@ -110,6 +110,15 @@ footer p.right {
 	column-gap: 20px;
 }
 
+#github-projects li {
+	-moz-break-inside: avoid-column;
+	-webkit-break-inside: avoid-column;
+	break-inside: avoid-column;
+	/* fix for no browser currently supporting the rules above */
+	display: inline-block;
+	width: 100%;
+}
+
 #github-activities h5 {
 	line-height: 1.5;
 }
