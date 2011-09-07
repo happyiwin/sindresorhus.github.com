@@ -42,7 +42,7 @@ function linkifyTweet(text) {
 
 
 $(function() {
-/*
+	// Twitter Bootstrap
 	// scroll spy logic
 	// ================
 	var activeTarget,
@@ -78,6 +78,5 @@ $(function() {
 	processScroll();
 
 	$window.scroll(processScroll);
-
-*/		
+	
 });
