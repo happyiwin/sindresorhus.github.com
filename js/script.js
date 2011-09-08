@@ -38,9 +38,9 @@ $(function() {
 	var $githubActivities = $('#github-activities'),
 		feed = 'http://github.com/sindresorhus.atom',
 		key = 'ABQIAAAAjzaY8k8IJXZ_VHKx4AWVfhTGq4U4uw8C_FNhCjfPG8xBWUDyARQnxt6hDSJCS0Oia3bBYlq1ZiEygA',
-		url = 'https://ajax.googleapis.com/ajax/services/feed/load?num=8&output=json&v=1.0&q=' + encodeURIComponent( feed )
+		url = 'https://ajax.googleapis.com/ajax/services/feed/load?num=8&output=json&v=1.0&q=' + encodeURIComponent( feed );
 		// only use the key when live
-		url += window.location.hostname === 'sindresorhus.com' ? '&key='+key : '',
+		url += window.location.hostname === 'sindresorhus.com' ? '&key=' + key : '';
 		url += '&callback=?';
 	$.getJSON(url, function(response) {
 		var data = response.responseData.feed.entries,
