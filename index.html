@@ -12,18 +12,17 @@
 	<meta name="author" content="Sindre Sorhus">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!-- CSS concatenated and minified via ant build script-->
-	<link rel="stylesheet" href="css/bootstrap-1.2.0.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/tipsy.css">
 	<!-- end CSS-->
-	<script src="js/libs/modernizr-2.0.6.min.js"></script>
+	<script src="js/modernizr-2.0.6.min.js"></script>
 </head>
-<body>
+<body id="bootstrap-js">
 
 	<!-- Topbar
 	================================================== -->
-	<div class="topbar">
-		<div class="topbar-inner">
+	<div class="topbar" data-scrollspy="scrollspy">
+		<div class="fill">
 			<div class="container">
 				<h3><a href="#">sindresorhus.com</a></h3>
 				<ul class="nav">
@@ -38,12 +37,11 @@
 	
 	<!-- Header
 	================================================== -->
-	<header id="overview">
+	<header class="jumbotron subhead" id="overview">
 		<div class="inner">
 			<div class="container">
 				<h1>Sindre Sorhus</h1>
 				<p class="lead">developer at day, hacker at night</p>
-				<!--<p>My passion is creating stuff.</p>-->
 			</div><!-- /container -->
 		</div>
 	</header>
@@ -59,11 +57,11 @@
 				<h1>About me</h1>
 			</div>
 			<div class="row">
-				<div class="span6 columns">
+				<div class="span6">
 					<h3>Background</h3>
-					<p>Norwegian developer with a passion for building stuff. When I'm not trying to wear out my keyboard, I try to give my Nikon D300 some attention.</p>
+					<p>Norwegian developer with a passion creating stuff. When I'm not wearing out my keyboard, I try to give my Nikon D300 some attention.</p>
 				</div>
-				<div class="span5 columns">
+				<div class="span5">
 					<h3>Social</h3>
 					<p>Me on the internetz</p>
 					<ul class="unstyled vertical-space">
@@ -77,7 +75,7 @@
 						<li><a class="icon kickstarter" href="http://www.kickstarter.com/profile/sindresorhus">Kickstarter</a></li>
 					</ul>
 				</div>
-				<div class="span5 columns">
+				<div class="span5">
 					<h3>Technology</h3>
 					<p>Words that make me excited</p>
 					<ul>
@@ -88,7 +86,9 @@
 						<li>Django</li>
 						<li>CSS</li>
 						<li>HTML</li>
+						<li>JSON</li>
 						<li>Apps</li>
+						<li>git</li>
 						<li>Open Standards</li>
 						<li>Photography</li>
 						<li>Apple</li>
@@ -106,10 +106,17 @@
 				<h1>Projects</h1>
 			</div>
 			<div class="row">
-				<div class="span16 columns">
+				<div class="span8">
+					<h3>GitHub <small>my repositories</small></h3>
+					<p></p>
+					<ul id="github-repositories" class="unstyled">
+						<li>Loading GitHub repositories...</li>
+					</ul>
+				</div>
+				<div class="span8">
 					<h3>GitHub <small>my forks</small></h3>
 					<p></p>
-					<ul id="github-projects" class="unstyled">
+					<ul id="github-forks" class="unstyled">
 						<li>Loading GitHub repositories...</li>
 					</ul>
 				</div>
@@ -123,14 +130,14 @@
 				<h1>Activities</h1>
 			</div>
 			<div class="row">
-				<div class="span8 columns">
+				<div class="span8">
 					<h3>GitHub <small>activity</small></h3>
 					<p></p>
 					<ul id="github-activities" class="unstyled seperator">
 						<li>Loading GitHub activities...</li>
 					</ul>
 				</div>
-				<div class="span8 columns">
+				<div class="span8">
 					<h3>Twitter <small>tweets</small></h3>
 					<ul id="twitter-activities" class="unstyled seperator">
 						<li>Loading tweets...</li>
@@ -154,9 +161,13 @@
 
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-	<script src="js/libs/jquery.tipsy.js"></script>
-
-
+	<script src="js/bootstrap-twipsy.js"></script>
+	<script src="js/bootstrap-scrollspy.js"></script>
+	<!--<script src="js/bootstrap-modal.js"></script>-->
+	<!--<script src="js/bootstrap-alerts.js"></script>-->
+	<!--<script src="js/bootstrap-popover.js"></script>-->
+	<!--<script src="js/bootstrap-dropdown.js"></script>-->
+	<!--<script src="js/bootstrap-tabs.js"></script>-->
 	<!-- scripts concatenated and minified via ant build script-->
 	<script defer src="js/plugins.js"></script>
 	<script defer src="js/script.js"></script>
@@ -164,11 +175,11 @@
 
 	
 	<script>
-		 var _gaq=[['_setAccount','UA-25562592-1'],['_trackPageview'],['_trackPageLoadTime']];
-		 (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		 g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		 s.parentNode.insertBefore(g,s)}(document,'script'));
-	 </script>
+		var _gaq=[['_setAccount','UA-25562592-1'],['_trackPageview'],['_trackPageLoadTime']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>
 
 
 	<!--[if lt IE 7 ]>
