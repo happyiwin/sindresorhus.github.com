@@ -4,12 +4,20 @@
 }
 
 ::selection {
-	background: #f1e7dd;
+	background: #dbe4ee;
 	text-shadow: none;
 }
 
 body {
 	background-color: #fafafa;
+}
+
+a {
+	color: #39658e;
+}
+
+a:hover {
+	color: #294866;
 }
 
 /* from Twitter Bootstrap docs CSS */
@@ -23,14 +31,14 @@ section > .row {
 }
 
 header, footer {
-	background-color: #533b21;
+	background-color: #38414a;
 	background-repeat: no-repeat;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#785b3b), to(#3d2911));
-	background-image: -webkit-linear-gradient(#785b3b, #3d2911);
-	background-image: -moz-linear-gradient(#785b3b, #3d2911);
-	background-image: -o-linear-gradient(top, #785b3b, #3d2911);
-	background-image: -khtml-gradient(linear, left top, left bottom, from(#785b3b), to(#3d2911));
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#785b3b', endColorstr='#3d2911', GradientType=0);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#4b5561), to(#2d343b));
+	background-image: -webkit-linear-gradient(#4b5561, #2d343b);
+	background-image: -moz-linear-gradient(#4b5561, #2d343b);
+	background-image: -o-linear-gradient(top, #4b5561, #2d343b);
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#4b5561), to(#2d343b));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4b5561', endColorstr='#2d343b', GradientType=0);
 
 
 /* IE8 and down */
@@ -53,7 +61,7 @@ footer p {
 
 header p a,
 footer p a {
-	color: #e4d5c5;
+	color: #ccd9e6;
 	font-weight: bold;
 }
 
