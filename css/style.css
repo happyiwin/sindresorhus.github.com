@@ -9,8 +9,8 @@
 }
 
 body {
-	background-color: #fff;
 	position: relative;
+	background: #23262b url('../img/bg.jpg');
 }
 
 a {
