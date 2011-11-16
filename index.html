@@ -24,7 +24,7 @@
 	<div class="topbar" data-scrollspy="scrollspy">
 		<div class="fill">
 			<div class="container">
-				<h3><a href="#">sindresorhus.com</a></h3>
+				<h3><a href="#">Sindre Sorhus</a></h3>
 				<ul class="nav">
 					<li class="active"><a href="#overview">Overview</a></li>
 					<li><a href="#about">About</a></li>
@@ -37,12 +37,11 @@
 	
 	<!-- Header
 	================================================== -->
-	<header class="jumbotron subhead" id="overview">
-		<div class="inner">
-			<div class="container">
-				<h1>Sindre Sorhus</h1>
-				<p class="lead">developer at day, hacker at night</p>
-			</div><!-- /container -->
+	<header class="jumbotron subhead" id="overview">			
+		<div id="galleria">
+			<a href="galleria-img/1.jpg"><img></a>
+			<a href="galleria-img/2.jpg"><img></a>
+			<a href="galleria-img/3.jpg"><img></a>
 		</div>
 	</header>
 	
@@ -59,6 +58,7 @@
 			<div class="row">
 				<div class="span6">
 					<h3>Background</h3>
+					<img class="thumbnail" src="">
 					<p>Norwegian developer with a passion creating stuff. When I'm not wearing out my keyboard, I try to give my Nikon D300 some attention.</p>
 				</div>
 				<div class="span5">
@@ -107,16 +107,9 @@
 			</div>
 			<div class="row">
 				<div class="span8">
-					<h3>GitHub <small>my repositories</small></h3>
+					<h3>GitHub <small>repos</small></h3>
 					<p></p>
 					<ul id="github-repositories" class="unstyled">
-						<li>Loading GitHub repositories...</li>
-					</ul>
-				</div>
-				<div class="span8">
-					<h3>GitHub <small>my forks</small></h3>
-					<p></p>
-					<ul id="github-forks" class="unstyled">
 						<li>Loading GitHub repositories...</li>
 					</ul>
 				</div>
@@ -150,17 +143,18 @@
 	</div> <!--! end of #container -->
 	
 	
-	<footer>
+	<footer class="footer">
 		<div class="inner">
 			<div class="container">
-				<p class="right"><a href="#">Back to top</a></p>
+				<p class="pull-right"><a href="#">Back to top</a></p>
 				<p>Built with <a href="http://jquery.com" target="_blank">jQuery</a>, <a href="http://html5boilerplate.com/" target="_blank">HTML5 Boilerplate</a>, <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>, and lots of coffee.</p>
 			</div>
 		</div>
 	</footer>
 
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
 	<script src="js/bootstrap-twipsy.js"></script>
 	<script src="js/bootstrap-scrollspy.js"></script>
 	<!--<script src="js/bootstrap-modal.js"></script>-->
@@ -169,6 +163,7 @@
 	<!--<script src="js/bootstrap-dropdown.js"></script>-->
 	<!--<script src="js/bootstrap-tabs.js"></script>-->
 	<!-- scripts concatenated and minified via ant build script-->
+	<script src="galleria/galleria.js"></script>
 	<script defer src="js/plugins.js"></script>
 	<script defer src="js/script.js"></script>
 	<!-- end scripts-->
