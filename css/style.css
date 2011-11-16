@@ -83,6 +83,9 @@ section > .row {
   margin-bottom: 10px;
 }
 
+#galleria {
+	height: 600px;
+	width: 100%;
 }
 
 #github-activities h5 {

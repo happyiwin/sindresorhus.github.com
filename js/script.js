@@ -49,5 +49,11 @@ $(function() {
 		html: true,
 		offset: 4
 	});
+	
+	Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
+	$('#galleria').galleria({
+	    debug: true
+	});
+	
 
 });
