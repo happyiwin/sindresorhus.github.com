@@ -19,36 +19,8 @@ if(this.console) {
 // TODO: report bug with using Twipsy live and elementOptions. Their overwriting each others option.placement. //twipsy overrides eachothers gravity if live is on, and elementOptions is overriden.
 // add abiltity to set Tipsy gravity in element data attribute
 $.fn.twipsy.elementOptions = function(elem, options) {
-    options.placement = $(elem).data('twipsy-placement') || options.placement;
-    return options;
-};
-
-// Get my GitHub repositories
-$.fn.getRepositories = function(forks) {
-	return this.each(function() {
-		// get my repositories from GitHub
-		var $this = $(this);
-		$.getJSON('https://api.github.com/users/sindresorhus/repos?callback=?', function(response) {
-			var data = response.data.reverse(),
-				output = [];
-			for ( var i = 0, len = data.length; i < len; i++ ) {
-				var item = data[i];
-				// temporary limit the number of repositories until I get enough of my own.
-				if ( i > 5 ) {
-					break;
-				}
-				if ( forks && item.fork || !forks && !item.fork ) {
-					var updated = parseToRelativeTime( item.updated_at ),
-						created = parseToRelativeTime( item.created_at ),
-						description = item.name === 'sindresorhus.github.com' ? 'The website you\'re currently viewing' : item.description;
-					output.push('<li class="tip" data-twipsy-placement="left" title="Updated ' + updated + '<br />Created ' + created + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4><p>' + description + '</p></li>');
-				}
-			}
-			$this.html( output.join('') );
-		}).error(function() {
-			$this.html('<li>Couldn\'t load GitHub repositories.</li>');
-		});
-	});
+	options.placement = $(elem).data('twipsy-placement') || options.placement;
+	return options;
 };
 
 function relativeTime(date_object) {

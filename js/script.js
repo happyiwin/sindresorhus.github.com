@@ -1,12 +1,28 @@
-/* Author: Sindre Sorhus
-
+/*
+Author: Sindre Sorhus
 */
 $(function() {
+	
+	// get my repositories from GitHub
+	var $githubRepos = $('#github-repos');
+	$.getJSON('https://api.github.com/users/sindresorhus/repos?per_page=20&callback=?', function(response) {
+		var data = response.data.reverse(),
+			output = [];
+		for ( var i = 0, len = data.length; i < len; i++ ) {
+			var item = data[i];
+			if ( !item.fork ) {
+				var updated = parseToRelativeTime( item.updated_at ),
+					created = parseToRelativeTime( item.created_at ),
+					description = item.name === 'sindresorhus.github.com' ? 'The website you\'re currently viewing' : item.description;
+				output.push('<li class="tip" data-twipsy-placement="left" title="Updated ' + updated + '<br />Created ' + created + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4><p>' + description + '</p></li>');
+			}
+		}
+		$githubRepos.html( output.join('') );
+	}).error(function() {
+		$githubRepos.html('<li>Couldn\'t load GitHub repositories.</li>');
+	});
 
-	$('#github-repositories').getRepositories();
-	$('#github-forks').getRepositories(true);
-
-	// get my activities from GitHub, using Google Feed proxy, since it's orginally an atom feed
+	// get my activities from GitHub, using Google Feed proxy, since it's originally an ATOM feed
 	var $githubActivities = $('#github-activities'),
 		feed = 'http://github.com/sindresorhus.atom',
 		key = 'ABQIAAAAjzaY8k8IJXZ_VHKx4AWVfhTGq4U4uw8C_FNhCjfPG8xBWUDyARQnxt6hDSJCS0Oia3bBYlq1ZiEygA',
@@ -52,7 +68,7 @@ $(function() {
 	
 	Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
 	$('#galleria').galleria({
-	    debug: true
+		debug: true
 	});
 	
 
