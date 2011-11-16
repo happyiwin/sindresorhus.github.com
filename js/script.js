@@ -1,6 +1,8 @@
 /*
 Author: Sindre Sorhus
 */
+
+var ltIE9 = $.browser.msie && parseInt( $.browser.version, 10 ) < 9;
 $(function() {
 	
 	// get my repositories from GitHub
@@ -66,10 +68,12 @@ $(function() {
 		offset: 4
 	});
 	
-	Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
-	$('#galleria').galleria({
-		debug: true
-	});
-	
+	// The slideshow is heavy, so don't load it in <IE9.
+	if ( !ltIE9 ) {
+		Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
+		$('#galleria').shuffle().galleria({
+			debug: true
+		});
+	}
 
 });
