@@ -16,7 +16,7 @@ $(function() {
 				var updated = parseToRelativeTime( item.updated_at ),
 					created = parseToRelativeTime( item.created_at ),
 					description = item.name === 'sindresorhus.github.com' ? 'The website you\'re currently viewing' : item.description;
-				output.push('<li class="tip" data-twipsy-placement="left" title="Updated ' + updated + '<br />Created ' + created + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4><p>' + description + '</p></li>');
+				output.push('<li class="tip" data-placement="left" title="Updated ' + updated + '<br />Created ' + created + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4><p>' + description + '</p></li>');
 			}
 		}
 		$githubRepos.html( output.join('') );
@@ -39,7 +39,7 @@ $(function() {
 			var item = data[i],
 				timeago = parseToRelativeTime( item.publishedDate ),
 				title = item.title.replace('sindresorhus ', '');
-			output.push('<li class="tip" data-twipsy-placement="left" title="' + timeago + '"><h5><a href="' + item.link + '">' + title + '</a></h5>' + item.contentSnippet + '</li>');
+			output.push('<li class="tip" data-placement="left" title="' + timeago + '"><h5><a href="' + item.link + '">' + title + '</a></h5>' + item.contentSnippet + '</li>');
 		}
 		$githubActivities.html( output.join('') );
 	}).error(function() {
@@ -55,7 +55,7 @@ $(function() {
 			var item = data[i],
 				timeago = parseToRelativeTime( item.created_at ),
 				linkifiedTweet = linkifyTweet( item.text );
-			output.push('<li class="tip" data-twipsy-placement="right" title="' + timeago + '">' + linkifiedTweet + '</li>');
+			output.push('<li class="tip" data-placement="right" title="' + timeago + '">' + linkifiedTweet + '</li>');
 		}
 		$twitterActivities.html( output.join('') );
 	}).error(function() {

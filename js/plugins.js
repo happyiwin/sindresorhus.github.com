@@ -15,14 +15,6 @@ if(this.console) {
 {console.log();return window.console;}catch(err){return window.console={};}})());
 
 
-
-// TODO: report bug with using Twipsy live and elementOptions. Their overwriting each others option.placement. //twipsy overrides eachothers gravity if live is on, and elementOptions is overriden.
-// add abiltity to set Tipsy gravity in element data attribute
-$.fn.twipsy.elementOptions = function(elem, options) {
-	options.placement = $(elem).data('twipsy-placement') || options.placement;
-	return options;
-};
-
 function relativeTime(date_object) {
 	var relative_to = (arguments.length > 1) ? arguments[1] : new Date(),
 		delta = parseInt((relative_to.getTime() - date_object) / 1000, 10);
