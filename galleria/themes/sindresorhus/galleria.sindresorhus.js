@@ -12,7 +12,6 @@ Galleria.requires(1.25, 'This version of Classic theme requires Galleria 1.2.5 o
 			carousel: false,
 			imageCrop: true,
 			initialTransition: 'fade',
-			maxScaleRatio: 1,
 			showCounter: false,
 			showInfo: false,
 			thumbnails: false,
