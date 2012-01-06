@@ -8,7 +8,7 @@ Galleria.requires(1.25, 'This version of Classic theme requires Galleria 1.2.5 o
 		css: 'galleria.sindresorhus.css',
 		defaults: {
 			debug: false,
-			autoplay: false,
+			autoplay: true,
 			carousel: false,
 			imageCrop: true,
 			initialTransition: 'fade',
