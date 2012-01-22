@@ -30,7 +30,7 @@ config.init({
 		tasks: 'default'
 	},
 	sqwish: {
-		strict: true
+		strict: false
 	}
 });
 
@@ -41,8 +41,7 @@ task.registerTask('prod', 'min css_min');
 task.registerBasicTask( 'css_min', 'Minify CSS files with Sqwish.', function( data, name ) {
 	var files = file.expand( data );
 	var max = task.helper( 'concat', files );
-	var min = require('sqwish').minify( max, config('sqwish').strict );
-	min = task.helper( 'gzip', min );
+	var min = require('sqwish').minify( max, config('sqwish').strict );	
 	file.write( name, min );
 	if ( task.hadErrors() ) {
 		return false;
