@@ -1,99 +1,131 @@
-/*
-Author: Sindre Sorhus
-*/
+(function() {
+	/*global t:true, parseToRelativeTime:true, Galleria:true */
+	"use strict";
 
-var ltIE9 = $.browser.msie && parseInt( $.browser.version, 10 ) < 9;
-$(function() {
+	//$('#main').prepend('Built: ' + new Date().toString());
 
-	// get my repositories from GitHub
-	var $githubRepos = $('#github-repos');
-	$.getJSON('https://api.github.com/users/sindresorhus/repos?per_page=20&callback=?', function(response) {
-		var data = response.data.reverse(),
-			output = [];
-		for ( var i = 0, len = data.length; i < len; i++ ) {
-			var item = data[i];
-			if ( !item.fork ) {
-				var updated = parseToRelativeTime( item.updated_at ),
-					created = parseToRelativeTime( item.created_at ),
-					description = item.name === 'sindresorhus.github.com' ? 'The website you\'re currently viewing' : item.description;
-				output.push('<li class="tip" data-placement="left" title="Updated ' + updated + '<br />Created ' + created + '"><h4><a href="' + item.html_url + '">' + item.name + '</a></h4><p>' + description + '</p></li>');
-			}
-		}
-		$githubRepos.html( output.join('') );
-	}).error(function() {
-		$githubRepos.html('<li>Couldn\'t load GitHub repositories.</li>');
-	});
+	var ltIE9 = $.browser.msie && parseInt( $.browser.version, 10 ) < 9;
 
-	// get my activities from GitHub, using Google Feed proxy, since it's originally an ATOM feed
-	var $githubActivities = $('#github-activities'),
-		feed = 'http://github.com/sindresorhus.atom',
-		key = 'ABQIAAAAjzaY8k8IJXZ_VHKx4AWVfhTGq4U4uw8C_FNhCjfPG8xBWUDyARQnxt6hDSJCS0Oia3bBYlq1ZiEygA',
-		url = 'https://ajax.googleapis.com/ajax/services/feed/load?num=3&output=json&v=1.0&q=' + encodeURIComponent( feed );
-		// only use the key when live
-		url += window.location.hostname === 'sindresorhus.com' ? '&key=' + key : '';
-		url += '&callback=?';
-	$.getJSON(url, function(response) {
-		var data = response.responseData.feed.entries,
-			output = [];
-		for ( var i = 0, len = data.length; i < len; i++ ) {
-			var item = data[i],
-				timeago = parseToRelativeTime( item.publishedDate ),
-				title = item.title.replace('sindresorhus ', '');
-			output.push('<li class="tip" data-placement="left" title="' + timeago + '"><h5><a href="' + item.link + '">' + title + '</a></h5>' + item.contentSnippet + '</li>');
-		}
-		$githubActivities.html( output.join('') );
-	}).error(function() {
-		$githubActivities.html('<li>Couldn\'t load GitHub activities.</li>');
-	});
-
-	// get my latest tweets
-	var $twitterActivities = $('#twitter-activities');
-	$.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=sindresorhus&count=5&trim_user=true&callback=?', function(response) {
-		var data = response,
-			output = [];
-		for ( var i = 0, len = data.length; i < len; i++ ) {
-			var item = data[i],
-				timeago = parseToRelativeTime( item.created_at ),
-				linkifiedTweet = linkifyTweet( item.text );
-			output.push('<li class="tip" data-placement="right" title="' + timeago + '">' + linkifiedTweet + '</li>');
-		}
-		$twitterActivities.html( output.join('') );
-	}).error(function() {
-		$twitterActivities.html('<li>Couldn\'t load tweets.</li>');
-	});
-
-	$('.tip, #social-icons a').twipsy({
-		live: true,
-		html: true,
-		offset: 4
-	});
-
-	// The slideshow is heavy, so don't load it in <IE9.
-	if ( !ltIE9 ) {
-		Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
-		$('#galleria').shuffle().galleria();
+	function loadGitHubUserInfo(date) {
+		var temp = 'I currently have <a href="https://github.com/sindresorhus">{{public_repos}} repos</a> and <a href="https://gist.github.com/sindresorhus">{{public_gists}} gists</a> on GitHub, and was last active {{last_active}}.';
+		$.getJSON('https://api.github.com/users/sindresorhus', function(data) {
+			data.last_active = date;
+			$('#github-userinfo').html( t( temp, data ) );
+		});
 	}
 
-	// Social icon animation
-	$('#social-icons li a').each(function() {
-		$(this).html('<div class="front"></div><div class="bottom">').gfxCube({
-			width: 48,
-			height: 48
+	function loadGitHubRepos() {
+		var $githubRepos = $('#github-repos');
+		var temp = '<li class="tip" data-placement="left" title="Updated {{updated}}<br />Created {{created}}"><h4><a href="{{html_url}}">{{name}}</a></h4><p>{{description}}</p></li>';
+		$.getJSON( 'https://api.github.com/users/sindresorhus/repos?per_page=20&callback=?', function(response) {
+			var data = response.data.reverse();
+			var out = [];
+			for ( var i = 0, l = data.length; i < l; i++ ) {
+				var item = data[i];
+				if ( item.fork ) {
+					continue;
+				}
+				if ( item.name === 'sindresorhus.github.com' ) {
+					item.description = 'The website you\'re currently viewing';
+				}
+				item.updated = parseToRelativeTime( item.updated_at );
+				item.created = parseToRelativeTime( item.created_at );
+				out.push( t( temp, item ) );
+			}
+			$githubRepos.html( out.join('') );
+		}).error(function() {
+			$githubRepos.html('<li>Couldn\'t load GitHub repositories.</li>');
 		});
-	}).hover(function() {
-		$(this).trigger('cube', 'bottom');
-	}, function() {
-		$(this).trigger('cube', 'front');
-	}).click(function() {
-		if ( this.className === 'email' ) {
-			var url = 'http://www.google.com/recaptcha/mailhide/d?k=01Ha4vkxTcdPC0z-iE6EjA5Q==&c=691OFr1i5ti5McPYj2QLgu8QWTfgbdNriQP_exhVo4A=';
-			$('#email-modal').modal('show').find('iframe').prop( 'src', url );
-			return false;
-		} else {
-			$(this).gfxExplodeOut({
-				reset: false
-			}).trigger('mouseout');
+	}
+
+	function loadGitHubActivities() {
+		var $githubActivities = $('#github-activities');
+		var temp = '<li class="tip" data-placement="left" title="{{publishedDate}}"><a href="{{link}}">{{title}}</a></li>';
+		var feed = 'http://github.com/sindresorhus.atom';
+		var key = 'ABQIAAAAjzaY8k8IJXZ_VHKx4AWVfhTGq4U4uw8C_FNhCjfPG8xBWUDyARQnxt6hDSJCS0Oia3bBYlq1ZiEygA';
+		var url = 'https://ajax.googleapis.com/ajax/services/feed/load?callback=?&num=5&output=json&v=1.0&q=' + encodeURIComponent( feed );
+		// Only use the key when live
+		if ( window.location.hostname === 'sindresorhus.com' ) {
+			url += '&key=' + key;
 		}
+		$.getJSON( url, function(response) {
+			var data = response.responseData.feed.entries;
+			var out = [];
+			for ( var i = 0, l = data.length; i < l; i++ ) {
+				var item = data[i];
+				item.publishedDate = parseToRelativeTime( item.publishedDate );
+				// Remove my username and uppercase the first letter
+				item.title = item.title.replace(/sindresorhus (\w)(\w*)/, function(str, m1, m2) {
+					return m1.toUpperCase() + m2;
+				});
+				out.push( t( temp, item ) );
+			}
+			$githubActivities.html( out.join('') );
+			// Need to load the user info after the repos since we need the last active date
+			loadGitHubUserInfo( data[0].publishedDate );
+		}).error(function() {
+			$githubActivities.html('<li>Couldn\'t load GitHub activities.</li>');
+		});
+	}
+
+	function loadTweets() {
+		var $twitterActivities = $('#twitter-activities');
+		var temp = '<li class="tip" data-placement="right" title="{{created_at}}">{{text}}</li>';
+		$.getJSON( 'https://api.twitter.com/1/statuses/user_timeline.json?screen_name=sindresorhus&count=4&trim_user=true&callback=?', function(response) {
+			var data = response;
+			var out = [];
+			for ( var i = 0, l = data.length; i < l; i++ ) {
+				var item = data[i];
+				item.created_at = parseToRelativeTime( item.created_at );
+				item.text = linkifyTweet( item.text );
+				out.push( t( temp, item ) );
+			}
+			$twitterActivities.html( out.join('') );
+		}).error(function() {
+			$twitterActivities.html('<li>Couldn\'t load tweets.</li>');
+		});
+	}
+
+	$(function() {
+
+		loadGitHubRepos();
+		loadGitHubActivities();
+		loadTweets();
+
+		$('.tip, #social-icons a').twipsy({
+			live: true,
+			html: true,
+			offset: 4
+		});
+
+		// The slideshow is heavy, so don't load it in <IE9
+		if ( !ltIE9 ) {
+			//Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
+			//$('#galleria').shuffle().galleria();
+		}
+
+		// Social icon animation
+		$('#social-icons li a').each(function() {
+			$(this).html('<div class="front"></div><div class="bottom">').gfxCube({
+				width: 48,
+				height: 48
+			});
+		}).hover(function() {
+			$(this).trigger('cube', 'bottom');
+		}, function() {
+			$(this).trigger('cube', 'front');
+		}).click(function() {
+			if ( this.className === 'email' ) {
+				var url = 'http://www.google.com/recaptcha/mailhide/d?k=01Ha4vkxTcdPC0z-iE6EjA5Q==&c=691OFr1i5ti5McPYj2QLgu8QWTfgbdNriQP_exhVo4A=';
+				$('#email-modal').modal('show').find('iframe').prop( 'src', url );
+				return false;
+			} else {
+				$(this).gfxExplodeOut({
+					reset: false
+				}).trigger('mouseout');
+			}
+		});
+
 	});
 
-});
+})();

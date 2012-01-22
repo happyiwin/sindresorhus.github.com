@@ -1,6 +1,5 @@
-// make it safe to use console.log always
-(function(b){function c(){}for(var d="assert,clear,count,debug,dir,dirxml,error,exception,firebug,group,groupCollapsed,groupEnd,info,log,memoryProfile,memoryProfileEnd,profile,profileEnd,table,time,timeEnd,timeStamp,trace,warn".split(","),a;a=d.pop();){b[a]=b[a]||c}})((function(){try
-{console.log();return window.console;}catch(err){return window.console={};}})());
+// My own awesome little template function
+(function(a){var b=/{{\s*([\w|\.]*)\s*}}/gi;a.t=function(a,f){return a.replace(b,function(a,b){for(var e=b.split("."),c=f,d=0,g=e.length;d<g;d++)c=c[e[d]];return c})}})(this);
 
 function relativeTime(date_object) {
 	var relative_to = (arguments.length > 1) ? arguments[1] : new Date(),
