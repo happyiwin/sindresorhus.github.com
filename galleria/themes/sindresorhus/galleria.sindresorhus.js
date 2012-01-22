@@ -1,4 +1,3 @@
-Galleria.requires(1.25, 'This version of Classic theme requires Galleria 1.2.5 or later');
 // TODO: Add fullscreen button
 // - create a custom loader graphic
 (function($) {

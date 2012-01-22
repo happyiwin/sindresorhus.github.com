@@ -1,31 +1,32 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="google-site-verification" content="4l0I_CmNO5kblMX3Y0-zEUC4LMillRzkUIdnKbN6bo4" />
+	<meta name="google-site-verification" content="4l0I_CmNO5kblMX3Y0-zEUC4LMillRzkUIdnKbN6bo4">
 	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
 	<meta name="description" content="Personal website of Sindre Sorhus">
 	<meta name="author" content="Sindre Sorhus">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
-	<script src="{{ site.baseurl }}/js/modernizr-2.0.6.min.js"></script>
+	<!--<script src="{{ site.baseurl }}/js/modernizr-2.0.6.min.js"></script>-->
 </head>
 <body id="bootstrap-js">
 	<div class="topbar" data-scrollspy="scrollspy">
 		<div class="fill">
 			<div class="container">
 				<h3><a href="/">Sindre Sorhus</a></h3>
-				<ul class="nav">
-					<li class="active"><a href="/#overview">Overview</a></li>
-					<li><a href="/#about">About</a></li>
-					<li><a href="/#projects">Projects</a></li>
-					<li><a href="/#activities">Activities</a></li>
-					<!--<li><a href="/blog">Blog</a></li>-->
-				</ul>
+				<nav>
+					<ul class="nav">
+						<li class="active"><a href="/#overview">Overview</a></li>
+						<li><a href="/#about">About</a></li>
+						<li><a href="/#projects">Projects</a></li>
+						<li><a href="/#activities">Activities</a></li>
+						<!--<li><a href="/blog">Blog</a></li>-->
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
@@ -48,24 +49,7 @@
 	</footer>
 	-->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-	<script src="{{ site.baseurl }}/js/jquery.easing.min.js"></script>
-	<script src="{{ site.baseurl }}/js/jquery.shuffle.js"></script>
-	<script src="{{ site.baseurl }}/js/bootstrap-twipsy.js"></script>
-	<script src="{{ site.baseurl }}/js/bootstrap-scrollspy.js"></script>
-	<script src="{{ site.baseurl }}/js/bootstrap-modal.js"></script>
-	<!--<script src="js/bootstrap-alerts.js"></script>-->
-	<!--<script src="js/bootstrap-popover.js"></script>-->
-	<!--<script src="js/bootstrap-dropdown.js"></script>-->
-	<!--<script src="js/bootstrap-tabs.js"></script>-->
-	<!-- scripts concatenated and minified via ant build script-->
-	<script src="{{ site.baseurl }}/galleria/galleria.js"></script>
-	<script src="{{ site.baseurl }}/js/gfx.js"></script>
-	<script src="{{ site.baseurl }}/js/gfx.flip.js"></script>
-	<script src="{{ site.baseurl }}/js/gfx.cube.js"></script>
-	<script src="{{ site.baseurl }}/js/gfx.overlay.js"></script>
-	<script defer src="{{ site.baseurl }}/js/plugins.js"></script>
-	<script defer src="{{ site.baseurl }}/js/script.js"></script>
-	<!-- end scripts-->
+	<script defer src="{{ site.baseurl }}/dist/combined.js"></script>
 	<script>
 		var _gaq=[['_setAccount','UA-25562592-1'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
