@@ -100,8 +100,8 @@
 
 		// The slideshow is heavy, so don't load it in <IE9
 		if ( !ltIE9 ) {
-			//Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
-			//$('#galleria').shuffle().galleria();
+			Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
+			$('#galleria').shuffle().galleria();
 		}
 
 		// Social icon animation

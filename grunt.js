@@ -10,7 +10,6 @@ config.init({
 		'js/gfx.js',
 		'js/gfx.cube.js',
 		'galleria/galleria.js',
-		'galleria/themes/sindresorhus/galleria.sindresorhus.js',
 		'js/plugins.js',
 		'js/script.js'
 	],
@@ -20,11 +19,11 @@ config.init({
 	min: {
 		'dist/combined.js': ['<config:files>']
 	},
-		less: {
+	less: {
 		'dist/combined.css': 'less/style.less'
 	},
 	css_min: {
-		'dist/combined.css': ['css/combined.css']
+		'dist/combined.css': 'dist/style.css'
 	},
 	watch: {
 		files: '<config:files>',
@@ -36,8 +35,8 @@ config.init({
 });
 
 // Default task.
-task.registerTask('default', 'concat less');
-task.registerTask('prod', 'min less css_min');
+task.registerTask('default', 'concat css_min');
+task.registerTask('prod', 'min css_min');
 
 task.registerBasicTask( 'css_min', 'Minify CSS files with Sqwish.', function( data, name ) {
 	var files = file.expand( data );

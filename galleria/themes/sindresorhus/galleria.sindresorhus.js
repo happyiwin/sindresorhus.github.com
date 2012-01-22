@@ -14,7 +14,7 @@
 			showCounter: false,
 			showInfo: false,
 			thumbnails: false,
-			transition: 'fade'
+			transition: false
 		},
 		init: function(options) {
 			var galleria = this;
