@@ -9,10 +9,17 @@ is_index: true
 	<div class="row">
 		<div class="span10">
 			<h3>Background</h3>
-			<figure class="polaroid">
-				<img src="img/me.jpg" width="146" height="184" alt="Photo of Sindre Sorhus">
-			</figure>
-			<p>(Web|mobile) developer, with an eye for great UI.<br />Photographer. Minimalist. Perfectionist. Apple fanboy.<br />Passion for creating stuff. Love trying out new technologies, actually love trying out new of everything, especially experiences.</p>
+			<div itemscope itemtype="http://schema.org/Person">
+				<figure class="polaroid">
+					<img src="img/me.jpg" width="146" height="184" alt="Sindre Sorhus" itemprop="image">
+					<figcaption itemprop="name">Sindre Sorhus</figcaption>
+				</figure>
+				<div itemprop="description">
+					<h4>Web developer with an eye for great UI</h4>
+					<p>Minimalist. Perfectionist. Photographer. Apple fanboy.<br />Passion for creating stuff. Love trying out new technologies, actually love trying out new of everything, especially experiences.</p>
+					<p>I mostly code in JavaScript and Python, but I'm not afraid to get my hands dirty.</p>
+				</div>
+			</div>
 		</div>
 		<div class="span3">
 			<h3>Social</h3>
