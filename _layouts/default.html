@@ -10,15 +10,20 @@
 	<meta name="description" content="Personal website of Sindre Sorhus. Web developer with an eye for great UI.">
 	<meta name="author" content="Sindre Sorhus">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" href="{{ site.baseurl }}/dist/combined.css">
-	<!--<script src="{{ site.baseurl }}/js/modernizr-2.0.6.min.js"></script>-->
+	<link rel="stylesheet" href="{{ site.baseurl }}/dist/style.css">
+	<script src="{{ site.baseurl }}/js/modernizr.custom.10988.js"></script>
 </head>
 <body id="bootstrap-js">
-	<div class="topbar" data-scrollspy="scrollspy">
-		<div class="fill">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
 			<div class="container">
-				<h3><a href="/">Sindre Sorhus</a></h3>
-				<nav>
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">Sindre Sorhus</a>
+				<nav class="nav-collapse">
 					<ul class="nav">
 						<li><a href="/#overview">Overview</a></li>
 						<li><a href="/#about">About</a></li>
@@ -30,14 +35,14 @@
 			</div>
 		</div>
 	</div>
-	<header class="jumbotron subhead" id="overview">
-	{% if page.is_index %}
-	{% include slideshow.html %}
-	{% endif %}
+	<header id="overview">
+		{% if page.is_index %}
+		{% include slideshow.html %}
+		{% endif %}
 	</header>
-	<div id="main" class="container">
+	<section id="main" class="container">
 		{{ content }}
-	</div>
+	</section>
 	<!--
 	<footer class="footer">
 		<div class="inner">

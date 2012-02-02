@@ -1,18 +1,22 @@
-/*global config:true, task:true*/
+/*global config:true, task:true, file:true, log:true*/
 config.init({
 	files: [
 		'js/jquery.easing.min.js',
 		'js/jquery.shuffle.js',
 		'js/jquery.xdomainajax.js',
+		'js/jquery-ajax-localstorage-cache.js',
+		'js/bootstrap-transition.js',
+		'js/bootstrap-collapse.js',
 		'js/bootstrap-modal.js',
-		'js/bootstrap-twipsy.js',
-		'js/bootstrap-popover.js',
+		'js/bootstrap-tooltip.js',
+		'js/bootstrap-carousel.js',
 		'js/gfx.js',
 		'js/gfx.cube.js',
 		'galleria/galleria.js',
 		'js/plugins.js',
 		'js/script.js'
 	],
+	css_files: 'dist/style.css',
 	concat: {
 		'dist/combined.js': ['<config:files>']
 	},
@@ -20,13 +24,14 @@ config.init({
 		'dist/combined.js': ['<config:files>']
 	},
 	less: {
+		// LESS needs better support for relative imports before this can be used
 		'dist/combined.css': 'less/style.less'
 	},
 	css_min: {
 		'dist/combined.css': 'dist/style.css'
 	},
 	watch: {
-		files: '<config:files>',
+		files: ['<config:files>', '<config:css_files'],
 		tasks: 'default'
 	},
 	sqwish: {
@@ -34,14 +39,13 @@ config.init({
 	}
 });
 
-// Default task.
-task.registerTask('default', 'concat css_min');
+task.registerTask('default', 'concat');
 task.registerTask('prod', 'min css_min');
 
 task.registerBasicTask( 'css_min', 'Minify CSS files with Sqwish.', function( data, name ) {
 	var files = file.expand( data );
 	var max = task.helper( 'concat', files );
-	var min = require('sqwish').minify( max, config('sqwish').strict );	
+	var min = require('sqwish').minify( max, config('sqwish').strict );
 	file.write( name, min );
 	if ( task.hadErrors() ) {
 		return false;
