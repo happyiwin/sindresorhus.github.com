@@ -97,81 +97,6 @@ jQuery.easing.jswing=jQuery.easing.swing;jQuery.extend(jQuery.easing,{def:"easeO
 	}
 	
 })(jQuery);
-/**
- * jQuery.ajax mid - CROSS DOMAIN AJAX
- * ---
- * @author James Padolsey (http://james.padolsey.com)
- * @version 0.11
- * @updated 12-JAN-10
- * ---
- * Note: Read the README!
- * ---
- * @info http://james.padolsey.com/javascript/cross-domain-requests-with-jquery/
- */
-
-jQuery.ajax = (function(_ajax){
-
-    var protocol = location.protocol,
-        hostname = location.hostname,
-        exRegex = RegExp(protocol + '//' + hostname),
-        YQL = 'http' + (/^https/.test(protocol)?'s':'') + '://query.yahooapis.com/v1/public/yql?callback=?',
-        query = 'select * from html where url="{URL}" and xpath="*"';
-
-    function isExternal(url) {
-        return !exRegex.test(url) && /:\/\//.test(url);
-    }
-
-    return function(o) {
-
-        var url = o.url;
-
-        if ( /get/i.test(o.type) && !/json/i.test(o.dataType) && isExternal(url) ) {
-
-            // Manipulate options so that JSONP-x request is made to YQL
-
-            o.url = YQL;
-            o.dataType = 'json';
-
-            o.data = {
-                q: query.replace(
-                    '{URL}',
-                    url + (o.data ?
-                        (/\?/.test(url) ? '&' : '?') + jQuery.param(o.data)
-                    : '')
-                ),
-                format: 'xml'
-            };
-
-            // Since it's a JSONP request
-            // complete === success
-            if (!o.success && o.complete) {
-                o.success = o.complete;
-                delete o.complete;
-            }
-
-            o.success = (function(_success){
-                return function(data) {
-
-                    if (_success) {
-                        // Fake XHR callback.
-                        _success.call(this, {
-                            responseText: data.results[0]
-                                // YQL screws with <script>s
-                                // Get rid of them
-                                .replace(/<script[^>]+?\/>|<script(.|\s)*?\/script>/gi, '')
-                        }, 'success');
-                    }
-
-                };
-            })(o.success);
-
-        }
-
-        return _ajax.apply(this, arguments);
-
-    };
-
-})(jQuery.ajax);
 
 // github.com/paulirish/jquery-ajax-localstorage-cache
 // dependent on Modernizr's localStorage test
@@ -6717,7 +6642,7 @@ function linkifyTweet(text) {
 	return text;
 }
 (function() {
-/*global t:true, parseToRelativeTime:true, Galleria:true, Modernizr:true*/
+/*global t:true, parseToRelativeTime:true, linkifyTweet:true, Galleria:true, Modernizr:true*/
 "use strict";
 
 //$('#main').prepend('Built: ' + new Date().toString());
@@ -6732,8 +6657,8 @@ var ltIE9 = $.browser.msie && parseInt( $.browser.version, 10 ) < 9;
 
 function loadGitHubUserInfo(date) {
 	var temp = 'I have <a href="https://github.com/sindresorhus">{{public_repos}} repos</a> and <a href="https://gist.github.com/sindresorhus">{{public_gists}} gists</a> on GitHub, and was last active {{last_active}}.';
-	$.getJSON('https://api.github.com/users/sindresorhus', function(data) {
-		console.log('loaded github userinfo', data);
+	$.getJSON('https://api.github.com/users/sindresorhus?callback=?', function(response) {
+		var data = response.data;
 		data.last_active = $.trim( date );
 		$('#github-userinfo').html( t( temp, data ) );
 	});

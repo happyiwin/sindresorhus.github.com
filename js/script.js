@@ -1,5 +1,5 @@
 (function() {
-/*global t:true, parseToRelativeTime:true, Galleria:true, Modernizr:true*/
+/*global t:true, parseToRelativeTime:true, linkifyTweet:true, Galleria:true, Modernizr:true*/
 "use strict";
 
 //$('#main').prepend('Built: ' + new Date().toString());
@@ -14,8 +14,8 @@ var ltIE9 = $.browser.msie && parseInt( $.browser.version, 10 ) < 9;
 
 function loadGitHubUserInfo(date) {
 	var temp = 'I have <a href="https://github.com/sindresorhus">{{public_repos}} repos</a> and <a href="https://gist.github.com/sindresorhus">{{public_gists}} gists</a> on GitHub, and was last active {{last_active}}.';
-	$.getJSON('https://api.github.com/users/sindresorhus', function(data) {
-		console.log('loaded github userinfo', data);
+	$.getJSON('https://api.github.com/users/sindresorhus?callback=?', function(response) {
+		var data = response.data;
 		data.last_active = $.trim( date );
 		$('#github-userinfo').html( t( temp, data ) );
 	});

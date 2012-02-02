@@ -3,7 +3,6 @@ config.init({
 	files: [
 		'js/jquery.easing.min.js',
 		'js/jquery.shuffle.js',
-		'js/jquery.xdomainajax.js',
 		'js/jquery-ajax-localstorage-cache.js',
 		'js/bootstrap-transition.js',
 		'js/bootstrap-collapse.js',
