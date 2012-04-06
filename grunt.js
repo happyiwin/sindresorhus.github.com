@@ -25,7 +25,7 @@ module.exports = function( grunt ) {
 		},
 		less: {
 			main: {
-				src: 'less/style.less',
+				src: 'less/main.less',
 				dest: 'dist/combined.css',
 				options: {
 					compress: true
