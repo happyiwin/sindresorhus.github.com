@@ -3,20 +3,20 @@
 Personal website of Sindre Sorhus
 
 
-## Run
+## Getting Started
 
 
 ### Prerequisites
 
 - [jekyll](http://jekyllrb.com)
-- [grunt ](https://github.com/cowboy/grunt) (`npm install -g grunt`)
+- [grunt ](https://github.com/cowboy/grunt) `npm install -g grunt`
 
 
 ### Compile
 
-- Open the current folder in Terminal.
-- `jekyll --server --auto` to make it auto update on file change.
-- New tab: `grunt watch` to make it compile on file change.
+1. Open the current folder in Terminal.
+2. `jekyll --server --auto` to auto update on file change.
+3. `grunt watch` in a new tab to compile on file change.
 
 
 ## Built with
@@ -26,6 +26,7 @@ Personal website of Sindre Sorhus
 - [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
 - [jekyll](http://jekyllrb.com)
 - [LESS](http://lesscss.org)
+- [ResponsiveSlides.js](http://responsive-slides.viljamis.com/)
 
 
 ## Attribution
