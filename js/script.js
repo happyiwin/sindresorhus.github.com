@@ -1,6 +1,6 @@
 (function() {
-/*global t:true, parseToRelativeTime:true, linkifyTweet:true, Galleria:true, Modernizr:true*/
-"use strict";
+/*global t:true, parseToRelativeTime:true, linkifyTweet:true, Galleria:true, Modernizr:true */
+'use strict';
 
 //$('#main').prepend('Built: ' + new Date().toString());
 /*
@@ -100,7 +100,7 @@ $(function() {
 	loadTweets();
 
 	$('#social-icons').find('.email')
-	.attr( 'href', 'mailto:sindresorhus#gmail.com'.replace('#', '@') );
+		.attr( 'href', 'mailto:sindresorhus#gmail.com'.replace('#', '@') );
 
 	if ( !Modernizr.touch ) {
 		$('.tip, #social-icons a').tooltip();
@@ -109,10 +109,7 @@ $(function() {
 		});
 		// The slideshow is heavy, so don't load it in <IE9
 		if ( !ltIE9 ) {
-			Galleria.loadTheme('galleria/themes/sindresorhus/galleria.sindresorhus.js');
-			$('#galleria').shuffle().galleria({
-				debug: false
-			});
+			$('#slides').responsiveSlides();
 		}
 		// Social icon animation
 		$('#social-icons li a').each(function() {
