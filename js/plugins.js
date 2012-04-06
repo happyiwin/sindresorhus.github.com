@@ -1,5 +1,5 @@
 // My own awesome little template function
-(function(a){var b=/{{\s*([\w|\.]*)\s*}}/gi;a.t=function(a,f){return a.replace(b,function(a,b){for(var e=b.split("."),c=f,d=0,g=e.length;d<g;d++)c=c[e[d]];return c})}})(this);
+(function(a){var b=/{{\s*([\w|\.]*)\s*}}/gi;a.tpl=function(a,f){return a.replace(b,function(a,b){for(var e=b.split("."),c=f,d=0,g=e.length;d<g;d++)c=c[e[d]];return c})}})(this);
 
 function relativeTime(date_object) {
 	var relative_to = (arguments.length > 1) ? arguments[1] : new Date(),
