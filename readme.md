@@ -1,6 +1,6 @@
 # sindresorhus.com
 
-Personal website of Sindre Sorhus
+> Personal website of Sindre Sorhus
 
 
 ## Getting Started
@@ -36,5 +36,4 @@ Personal website of Sindre Sorhus
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
-(c) [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
